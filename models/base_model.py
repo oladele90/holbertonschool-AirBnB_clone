@@ -11,3 +11,5 @@ class BaseModel:
         self.created_at = datetime.utcnow()
         self.updated_at = datetime.utcnow()
 
+    def __str__ (self):
+        return str(__class__) + str(self.id) + str(__dict__)
