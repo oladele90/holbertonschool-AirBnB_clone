@@ -12,4 +12,11 @@ class BaseModel:
         self.updated_at = datetime.utcnow()
 
     def __str__ (self):
-        return str(__class__) + str(self.id) + str(__dict__)
+        print("[BaseModel] ({}) {}".format(self.id, self.__dict__))
+        return ("[BaseModel] ({}) {}".format(self.id, self.__dict__))
+
+    def save(self):
+        self.update_at = datetime.utcnow()
+        return self.updated_at
+
+    
