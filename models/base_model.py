@@ -4,4 +4,5 @@
 class BaseModel:
     """Base class for AirBnB project"""
 
-    def __init__(self, id, created_at, updated_at)
+    def __init__(self, id, created_at, updated_at):
+        
