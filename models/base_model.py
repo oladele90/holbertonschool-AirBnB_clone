@@ -3,15 +3,25 @@
 from uuid import uuid4
 from datetime import datetime
 
+dt_format = "%Y-%m-%dT%H:%M:%S.%f"
 
 class BaseModel:
     """Base class for AirBnB project"""
 
-    def __init__(self, id=None, created_at=0, updated_at=0):
+    def __init__(self, *args, **kwargs):
         """initialize new instance"""
-        self.id = str(uuid4())
-        self.created_at = datetime.utcnow()
-        self.updated_at = datetime.utcnow()
+        if args:
+            pass
+        if kwargs:
+            for key, item in kwargs.items():
+                if key in ['created_at', 'updated_at']:
+                    item = datetime.strptime(item, dt_format)
+                if key not in ['__class__']:
+                    setattr(self, key, item)
+        else:
+            self.id = str(uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
 
     def __str__(self):
         """redefine __str__()"""
