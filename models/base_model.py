@@ -10,13 +10,11 @@ class BaseModel:
     def __init__(self, id=None, created_at=0, updated_at=0):
         """initialize new instance"""
         self.id = str(uuid4())
-        self.created_at = (datetime.utcnow())
-        self.updated_at = (datetime.utcnow())
+        self.created_at = datetime.utcnow()
+        self.updated_at = datetime.utcnow()
 
     def __str__(self):
         """redefine __str__()"""
-        print("[{}] ({}) {}".format(self.__class__.__name__,
-                                    self.id, self.__dict__))
         return ("[{}] ({}) {}".format(self.__class__.__name__,
                                       self.id, self.__dict__))
 
