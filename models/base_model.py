@@ -16,13 +16,15 @@ class BaseModel:
         return ("[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__))
 
     def save(self):
-        self.update_at = datetime.utcnow()
+        self.updated_at = datetime.utcnow()
         return self.updated_at
 
     def to_dict(self):
         dict1 = {}
         dict1['__class__'] = self.__class__.__name__
-        dict1['created_at'] = self.created_at.isoformat()
-        dict1['updated_at'] = self.created_at.isoformat()
-        dict1['id'] = self.id
+        for key, item in self.__dict__.items():
+                dict1[key] = item
+        #dict1['created_at'] = self.created_at.isoformat()
+        #dict1['updated_at'] = self.created_at.isoformat()
+        #dict1['id'] = self.id
         return dict1
