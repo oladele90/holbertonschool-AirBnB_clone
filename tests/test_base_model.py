@@ -4,7 +4,6 @@ import unittest
 from models.base_model import BaseModel
 
 
-
 class Test(unittest.TestCase):
     """unit tests"""
 
