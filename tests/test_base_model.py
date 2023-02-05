@@ -12,6 +12,10 @@ class Test(unittest.TestCase):
         base2 = BaseModel()
         self.assertNotEqual(base1.id, base2.id)
 
+    def test_type(self):
+        base1 = BaseModel()
+        self.assertIsInstance(base1.id, str)
+
 
 if __name__ == '__main__':
     unittest.main()
