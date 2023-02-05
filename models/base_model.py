@@ -2,6 +2,7 @@
 """Base class module for AirBnB"""
 from uuid import uuid4
 from datetime import datetime
+import models
 
 dt_format = "%Y-%m-%dT%H:%M:%S.%f"
 
@@ -20,8 +21,8 @@ class BaseModel:
                     setattr(self, key, item)
         else:
             self.id = str(uuid4())
-            self.created_at = datetime.now()
-            self.updated_at = datetime.now()
+            self.created_at = datetime.utcnow()
+            self.updated_at = datetime.utcnow()
 
     def __str__(self):
         """redefine __str__()"""
@@ -30,8 +31,9 @@ class BaseModel:
 
     def save(self):
         """save method updates timestamp"""
-        self.updated_at = (datetime.utcnow())
-        return self.updated_at
+        self.updated_at = datetime.utcnow()
+        models.storage.new(self)
+        models.storage.save()
 
     def to_dict(self):
         """to_dict method converts to json rep"""
