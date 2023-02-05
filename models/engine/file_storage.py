@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 from json import dump, load, dumps
 from os.path import exists
-from models import base_model
+from models.base_model import BaseModel
+import models
+
 
 class FileStorage:
     """class for serialization and deserilization"""
