@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""file_storage module"""
 from json import dump, load, dumps
 from os.path import exists
 from models.base_model import BaseModel
