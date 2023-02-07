@@ -3,7 +3,6 @@
 
 import uuid
 from datetime import datetime
-from models import models
 from models.base_model import BaseModel
 
 class Review(BaseModel):
