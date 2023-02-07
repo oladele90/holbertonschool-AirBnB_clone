@@ -2,12 +2,13 @@
 """console module/ entry point for command interpreter"""
 import sys
 import cmd
-from models.base_model import BaseModel 
+from models.base_model import BaseModel
 import models
 from datetime import datetime
 
 
 models_list = ["BaseModel"]
+
 
 class HBNBCommand(cmd.Cmd):
     """
@@ -28,8 +29,8 @@ class HBNBCommand(cmd.Cmd):
         raise SystemExit
 
     def emptyline(self):
-         pass
-    
+        pass
+
     def do_create(self, args):
         """
         creates a new instance of BaseModel
@@ -54,9 +55,9 @@ class HBNBCommand(cmd.Cmd):
         if args[0] not in models_list:
             print("** class doesn't exist **")
         else:
-            for key, value in storage.all().items()
+            for key, value in models.storage.all().items():
                 if args[1] == value.id:
-                    print(v)
+                    print(value)
                     return
             print("** no instance found **")
 
@@ -71,33 +72,27 @@ class HBNBCommand(cmd.Cmd):
         if args[0] not in models_list:
             print("** class doesn't exist **")
         else:
-            for key, value in storage.all().items():
+            for key, value in models.storage.all().items():
                 if args[1] == value.id:
-                    del storage.all()[key]
-                    storage.save()
+                    del models.storage.all()[key]
+                    models.storage.save()
                     return
             print("** no instance found **")
 
     def do_all(self, args):
         """Prints all string representation of all instances"""
 
-        split_args = args.split()
-        new_list = []
-        dict_json = models.storage.all()
-        if args:
-            try:
-                for key in models.storage.all():
-                    if split_args[0] == key.split('.')[0]:
-                        new_list.append(str(dict_json))
-                print(new_list)
-            except Exception:
-                print("** class doesn't exist **")
-        else:
-            for kein module.storage.all():
-                new_list.append(str(models.storage.all()[key]))
-            print(new_list)
-            
+        if args not in models_list and len(args) > 0:
+            print("** class doesn't exist **")
+        if not args:
+            for key in models.storage.all():
+                print([str(models.storage.all()[key])])
+        if args in models_list:
+            for key in models.storage.all():
+                key1 = key.split(".")[0]
+                if key1 == args:
+                    print([str(models.storage.all()[key])])
 
-    def 
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
