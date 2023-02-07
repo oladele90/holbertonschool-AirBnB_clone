@@ -11,6 +11,7 @@ class Test(unittest.TestCase):
 
     def test_type(self):
         storage = FileStorage()
+        self.assertIsNotNone(storage)
         self.assertIsInstance(storage._FileStorage__objects, dict)
         self.assertEqual(storage._FileStorage__file_path, "file.json")
 
@@ -22,4 +23,9 @@ class Test(unittest.TestCase):
         storage = FileStorage()
         base1 = BaseModel()
         storage.new(base1)
-        self.assertIsNotNone(storage.all())
+        key = f'BaseModel.{base1.id}'
+        self.assertIsNotNone(storage.all(), {key: base1})
+
+
+if __name__ == '__main__':
+    unittest.main()
