@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""console module/ entry point for command interpreter"""
 import sys
 import cmd
 from models.base_model import BaseModel 
@@ -13,7 +14,6 @@ class HBNBCommand(cmd.Cmd):
         Some sort of comment here
     """
     prompt = "(hbnb) "
-
 
     def do_quit(self, args):
         """
@@ -96,7 +96,7 @@ class HBNBCommand(cmd.Cmd):
             for kein module.storage.all():
                 new_list.append(str(models.storage.all()[key]))
             print(new_list)
-                    
+            
 
     def 
 if __name__ == '__main__':
