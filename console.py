@@ -2,9 +2,14 @@
 """console module/ entry point for command interpreter"""
 import sys
 import cmd
+from models import storage
 from models.base_model import BaseModel
-import models
 from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 from datetime import datetime
 
 
@@ -42,7 +47,7 @@ class HBNBCommand(cmd.Cmd):
             return
         if args in models_list:
             obj = eval(args)()
-            models.storage.new(obj)
+            storage.new(obj)
             obj.save()
             print(obj.id)
         else:
@@ -61,7 +66,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
         else:
-            for key, value in models.storage.all().items():
+            for key, value in storage.all().items():
                 if args[1] == value.id:
                     print(value)
                     return
@@ -81,10 +86,10 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
         else:
-            for key, value in models.storage.all().items():
+            for key, value in storage.all().items():
                 if args[1] == value.id:
-                    del models.storage.all()[key]
-                    models.storage.save()
+                    del storage.all()[key]
+                    storage.save()
                     return
             print("** no instance found **")
 
@@ -95,13 +100,13 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
         if not args:
-            for key in models.storage.all():
-                print([str(models.storage.all()[key])])
+            for key in storage.all():
+                print([str(storage.all()[key])])
         if args in models_list:
-            for key in models.storage.all():
+            for key in storage.all():
                 key1 = key.split(".")[0]
                 if key1 == args:
-                    print([str(models.storage.all()[key])])
+                    print([str(storage.all()[key])])
 
     def do_update(self, args):
         a_list = args.split(" ")
@@ -117,7 +122,7 @@ class HBNBCommand(cmd.Cmd):
             return
         if len(a_list) > 1:
             key_1 = ("{}.{}".format(a_list[0], a_list[1]))
-            if models.storage.all().get(key_1) is None:
+            if storage.all().get(key_1) is None:
                 print("** no instance found **")
                 return
         if len(a_list) == 2:
@@ -126,8 +131,8 @@ class HBNBCommand(cmd.Cmd):
         if len(a_list) == 3:
             print("** value missing **")
             return
-        if key_1 in models.storage.all():
-            setattr(models.storage.all()[key_1], a_list[2],
+        if key_1 in storage.all():
+            setattr(storage.all()[key_1], a_list[2],
                     a_list[3].strip('\'"'))
 
 
