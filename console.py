@@ -7,7 +7,7 @@ import models
 from datetime import datetime
 
 
-models_list = ["BaseModel"]
+models_list = ["BaseModel", "User"]
 
 
 class HBNBCommand(cmd.Cmd):
