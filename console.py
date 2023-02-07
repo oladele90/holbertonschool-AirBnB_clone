@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""console module/ entry point for command interpreter"""
 import cmd
 
 
