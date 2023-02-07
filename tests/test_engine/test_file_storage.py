@@ -29,11 +29,15 @@ class Test(unittest.TestCase):
         key = f'BaseModel.{base1.id}'
         self.assertIsNotNone(storage.all(), {key: base1})
 
-    def test_save():
+    def test_save(self):
         """test save function"""
-        pass
+        storage = FileStorage()
+        base1 = BaseModel()
+        storage.new(base1)
+        storage.save()
+        self.assertTrue("file.json")
 
-    def test_reload():
+    def test_reload(self):
         """test reload function"""
         pass
 
