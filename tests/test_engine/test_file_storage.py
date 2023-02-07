@@ -4,6 +4,7 @@ from datetime import datetime
 import unittest
 from models.base_model import BaseModel as BaseModel
 from models.engine.file_storage import FileStorage as FileStorage
+import os
 
 
 class Test(unittest.TestCase):
@@ -35,7 +36,10 @@ class Test(unittest.TestCase):
         base1 = BaseModel()
         storage.new(base1)
         storage.save()
-        self.assertTrue("file.json")
+        self.assertTrue(os.path.exists("file.json"))
+        with open("file.json", 'r') as f:
+            file1 = f.read()
+        self.assertTrue(len(file1) > 0)
 
     def test_reload(self):
         """test reload function"""
