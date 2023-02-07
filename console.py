@@ -4,6 +4,7 @@ import sys
 import cmd
 from models.base_model import BaseModel
 import models
+from models.user import User
 from datetime import datetime
 
 
