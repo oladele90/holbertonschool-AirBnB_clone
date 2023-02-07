@@ -37,6 +37,7 @@ class HBNBCommand(cmd.Cmd):
         """
         if args is None:
             print("** class name missing **")
+            return
         if args in models_list:
             obj = eval(args)()
             models.storage.new(obj)
@@ -49,11 +50,14 @@ class HBNBCommand(cmd.Cmd):
         """Prints the string representation of an instance"""
         if not (args):
             print("** class name missing **")
+            return
         args = args.split()
         if len(args) < 2:
             print("** instance id missing **")
+            return
         if args[0] not in models_list:
             print("** class doesn't exist **")
+            return
         else:
             for key, value in models.storage.all().items():
                 if args[1] == value.id:
@@ -66,11 +70,14 @@ class HBNBCommand(cmd.Cmd):
 
         if not (args):
             print("** class name missing **")
+            return
         args = args.split()
         if len(args) < 2:
             print("** instance id missing **")
+            return
         if args[0] not in models_list:
             print("** class doesn't exist **")
+            return
         else:
             for key, value in models.storage.all().items():
                 if args[1] == value.id:
@@ -84,6 +91,7 @@ class HBNBCommand(cmd.Cmd):
 
         if args not in models_list and len(args) > 0:
             print("** class doesn't exist **")
+            return
         if not args:
             for key in models.storage.all():
                 print([str(models.storage.all()[key])])
@@ -98,18 +106,24 @@ class HBNBCommand(cmd.Cmd):
 
         if len(a_list) == 0:
             print ("** class name missing **")
+            return
         if a_list[0] not in models_list:
             print("** class doesn't exist **")
+            return
         if len(a_list) == 1:
             print("** instance id missing **")
+            return
         if len(a_list) > 1:
             key_1 = ("{}.{}".format(a_list[0], a_list[1]))
             if models.storage.all().get(key_1) is None:
                 print("** no instance found **")
+                return
         if len(a_list) == 2:
             print("** attribute name missing **")
+            return
         if len(a_list) == 3:
             print("** value missing **")
+            return
         if key_1 in models.storage.all():
             setattr(models.storage.all()[key_1],a_list[2], a_list[3].strip('\'"'))
 
