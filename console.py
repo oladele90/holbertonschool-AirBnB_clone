@@ -1,13 +1,13 @@
 #!/usr/bin/python3
 import sys
-import cmd 
+import cmd
+
 
 class HBNBCommand(cmd.Cmd):
     """
         Some sort of comment here
     """
     prompt = "(hbnb) "
-
 
     def do_quit(self, args):
         """
@@ -22,7 +22,8 @@ class HBNBCommand(cmd.Cmd):
         raise SystemExit
 
     def emptyline(self):
-         pass
+        pass
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
