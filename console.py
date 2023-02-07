@@ -7,7 +7,8 @@ import models
 from datetime import datetime
 
 
-models_list = ["BaseModel", "User"]
+models_list = ["BaseModel", "User", "Place",
+               "State", "City", "Amenity", "Review"]
 
 
 class HBNBCommand(cmd.Cmd):
@@ -105,7 +106,7 @@ class HBNBCommand(cmd.Cmd):
         a_list = args.split(" ")
 
         if len(a_list) == 0:
-            print ("** class name missing **")
+            print("** class name missing **")
             return
         if a_list[0] not in models_list:
             print("** class doesn't exist **")
@@ -125,7 +126,8 @@ class HBNBCommand(cmd.Cmd):
             print("** value missing **")
             return
         if key_1 in models.storage.all():
-            setattr(models.storage.all()[key_1],a_list[2], a_list[3].strip('\'"'))
+            setattr(models.storage.all()[key_1], a_list[2],
+                    a_list[3].strip('\'"'))
 
 
 if __name__ == '__main__':
