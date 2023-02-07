@@ -20,6 +20,10 @@ class Test(unittest.TestCase):
     def test_all(self):
         """test all function"""
         storage = FileStorage()
+        dict1 = storage.all()
+        base1 = BaseModel()
+        storage.new(base1)
+        self.assertIsInstance(dict1, dict)
         self.assertIsNotNone(storage.all())
 
     def test_new(self):
