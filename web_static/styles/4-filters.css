@@ -5,5 +5,5 @@
     border: 1px solid #DDDDDD;
     border-radius: 4px;
     align-items: center;
-    display: flexbox;
+    display: block;
 }
