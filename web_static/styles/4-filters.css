@@ -5,7 +5,7 @@
     border: 1px solid #DDDDDD;
     border-radius: 4px;
     align-items: center;
-    display: block;
+    display: flex;
 }
 .filters button{
     font: 18px #FFFFFF;
