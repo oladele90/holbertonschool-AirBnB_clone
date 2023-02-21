@@ -7,3 +7,13 @@
     align-items: center;
     display: block;
 }
+.filters button{
+    font: 18px #FFFFFF;
+    background-color: #FF5A5F;
+    height: 48px;
+    width: 20%;
+    border: 0px;
+    border-radius: 4px;
+    margin-left: auto;
+    margin-right: 30px;
+}
