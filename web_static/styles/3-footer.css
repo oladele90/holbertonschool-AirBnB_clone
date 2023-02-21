@@ -6,4 +6,6 @@ footer {
     border-top-color: #CCCCCC;
     text-align: center;
     line-height: 60px;
+    bottom: 0px;
+    position: absolute;
 }
