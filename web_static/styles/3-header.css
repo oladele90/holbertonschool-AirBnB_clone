@@ -6,7 +6,7 @@ header {
     border-bottom-color: #CCCCCC;
 }
 .logo{
-    background-image: url("images/logo.png");
+    background-image: url("../images/logo.png");
     background-position: 20px;
     vertical-align: middle;
     height: 100%;
