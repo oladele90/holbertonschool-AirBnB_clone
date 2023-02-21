@@ -9,4 +9,5 @@ header {
     background-position: 20px;
     vertical-align: middle;
     height: 100%;
+    background-repeat: no-repeat;
 }
